@@ -23,8 +23,11 @@ public class Baek11729 {
 			sb.append(x + " " + y + "\n");
 		}
 		else {
+			// Move the n-1 plates to the remaining columns, not the target.
 			hanoi(n-1,x,z);
+			// Move the bottom plate to the target i want to move.
 			count++;
+			// Move the plates from the remaining columns to the target.
 			sb.append(x + " " + y + "\n");
 			hanoi(n-1,z,y);
 		}
