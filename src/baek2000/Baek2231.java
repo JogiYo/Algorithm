@@ -3,32 +3,36 @@ package baek2000;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-// BOJ 2231, brute force (-ing)
+// BOJ 2231, brute force
+// Decomposition sum: Finding a constructor. For example, the constructor for 216 is 198 + 1 + 9 +8.
 public class Baek2231 {
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 		
 		int n = Integer.parseInt(br.readLine());
-		int length = 0;
 		int sum = 0;
+		int ans = 0;
 		boolean flag = false;
 			
 		for(int i = 1; i <= n; i++) {
-			length = (int)Math.log10(i);
 			sum = i;
-			while(length >= 0) {
-				sum += i / (int)Math.pow(10, length);
-				i = i - (i / ((int)Math.pow(10, length))) * (int)Math.pow(10, length); 
-				length--;
+			int temp = i;
+			
+			// Finding a constructor
+			while(temp != 0) {
+				sum += temp%10;
+				temp = temp/10;
 			}
+			
 			if(sum == n) {
 				flag = true;
+				ans = i;
 				break;
 			}
 		}
 		
-		if(flag) sb.append(sum +"\n");
+		if(flag) sb.append(ans +"\n");
 		else sb.append("0\n");
 		
 		System.out.print(sb);
