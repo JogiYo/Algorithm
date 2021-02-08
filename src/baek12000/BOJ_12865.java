@@ -3,6 +3,8 @@ package baek12000;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+// BOJ 12865 : knapsack
+// using dynamic programming
 public class BOJ_12865 {
 	public static void main(String[] args) throws Exception{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
