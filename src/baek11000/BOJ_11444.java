@@ -2,7 +2,9 @@ package baek11000;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+// BOJ 11444 : Fibonacci number 6
+// use divide and conquer
+// See question 10830. (https://st-lab.tistory.com/252)
 public class BOJ_11444 {
     final static long MOD = 1000000007;
     static long[][] origin = {{1, 1}, {1, 0}};
@@ -14,14 +16,13 @@ public class BOJ_11444 {
         long N = Long.parseLong(br.readLine());
         long[][] A = {{1, 1}, {1, 0}};
 
-        long[][] result = solution(A, N - 1);
-        sb.append(result[0][0] + "");
+        sb.append(solution(A, N-1)[0][0] + "");
         System.out.print(sb);
     }
 
     private static long[][] solution(long[][] A, long exponent) {
-        // Returns as it is when the exponent is 1
-        if(exponent == 1) {
+        // Returns as it is when the exponent is 0 or 1
+        if(exponent == 0 || exponent == 1) {
             return A;
         }
 
