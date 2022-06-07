@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// BOJ 16139 : human-computer interaction
+// cumulative sum
 public class BOJ_16139 {
     static BufferedReader br;
     static StringBuilder sb;
@@ -19,31 +21,12 @@ public class BOJ_16139 {
     }
 
     private static void solution(String s) throws IOException {
-//        int n = Integer.parseInt(input[0]);
-//        int m = Integer.parseInt(input[1]);
-//        int[] sum = new int[n+1];
-//
-//        String[] arr = br.readLine().split(" ");
-        /* Find the cumulative sum
-         * 5 4 3 2 1
-         * 0 5 9 12 14 15
-         */
-//        for(int i = 1; i <= n; ++i) {
-//            sum[i] = sum[i-1] + Integer.parseInt(arr[i-1]);
-//        }
-//
-//        for(int i = 0; i < m; ++i) {
-//            String[] section = br.readLine().split(" ");
-//            int a = Integer.parseInt(section[0]);
-//            int b = Integer.parseInt(section[1]);
-//            sb.append((sum[b] - sum[a-1]) + "\n");
-//        }
-
         int q = Integer.parseInt(br.readLine());
         int[][] sum = new int[s.length()][26];
 
         sum[0][s.charAt(0) - 'a']++;
 
+        // Find the cumulative sum of the alphabet
         for(int i = 1; i < s.length(); ++i) {
             int temp = s.charAt(i) - 'a';
 
@@ -59,6 +42,7 @@ public class BOJ_16139 {
             int l = Integer.parseInt(st.nextToken());
             int r = Integer.parseInt(st.nextToken());
 
+            // Find the interval sum
             if(l == 0) {
                 sb.append(sum[r][ch - 'a']).append("\n");
             }
