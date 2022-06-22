@@ -5,6 +5,9 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+
+// BOJ 1931 : conference room assignment
+// Greedy algorithm
 public class BOJ_1931 {
     static BufferedReader br;
     static StringBuilder sb;
@@ -40,5 +43,17 @@ public class BOJ_1931 {
 
             return o1[1] - o2[1];
         });
+
+        int prev_end = 0;
+
+        for (int[] times : time) {
+            // If the previous end time is less than or equal to the start time of the next meeting, it is updated.
+            if (prev_end <= times[0]) {
+                prev_end = times[1];
+                count++;
+            }
+        }
+
+        return count;
     }
 }
