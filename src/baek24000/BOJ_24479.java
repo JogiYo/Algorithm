@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
+// BOJ 24479 : Depth First Search 1
+// use DFS, adjacency list
 public class BOJ_24479 {
     static BufferedReader br;
     static StringBuilder sb;
@@ -31,7 +33,7 @@ public class BOJ_24479 {
         answer = new int[n+1];
         edges = new ArrayList[n+1];
         visited = new boolean[n+1];
-        int idx = 0;
+        int order = 0; // node visit order
 
         for(int i = 1; i <= n; ++i) {
             edges[i] = new ArrayList<>();
@@ -53,17 +55,17 @@ public class BOJ_24479 {
         for(int i = 1; i <= n; ++i) Collections.sort(edges[i]);
 
         visited[r] = true;
-        dfs(r, idx);
+        dfs(r, order);
 
         for(int i = 1; i <= n; ++i) sb.append(answer[i]).append("\n");
     }
 
-    private static void dfs(int cur, int idx) {
-        answer[cur] = ++idx;
+    private static void dfs(int cur, int order) {
+        answer[cur] = ++order;
         for(int next : edges[cur]) {
             if(!visited[next]) {
                 visited[next] = true;
-                dfs(next, idx);
+                dfs(next, order);
             }
         }
     }
