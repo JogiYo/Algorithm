@@ -16,6 +16,7 @@ public class BOJ_24479 {
     static ArrayList<Integer>[] edges;
     static boolean[] visited;
     static int[] answer;
+    static int order = 0;
     public static void main(String[] args) throws Exception {
         br = new BufferedReader(new InputStreamReader(System.in));
         sb = new StringBuilder();
@@ -55,17 +56,17 @@ public class BOJ_24479 {
         for(int i = 1; i <= n; ++i) Collections.sort(edges[i]);
 
         visited[r] = true;
-        dfs(r, order);
+        dfs(r);
 
         for(int i = 1; i <= n; ++i) sb.append(answer[i]).append("\n");
     }
 
-    private static void dfs(int cur, int order) {
+    private static void dfs(int cur) {
         answer[cur] = ++order;
         for(int next : edges[cur]) {
             if(!visited[next]) {
                 visited[next] = true;
-                dfs(next, order);
+                dfs(next);
             }
         }
     }
