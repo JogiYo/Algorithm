@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-// BOJ 24479 : Depth First Search 2
+// BOJ 24480 : Depth First Search 2
 // use DFS, adjacency list
 public class BOJ_24480 {
     static BufferedReader br;
@@ -42,7 +42,7 @@ public class BOJ_24480 {
 
         /*
          *  Implemented as an adjacency list.
-         *  because of ascending
+         *  because of descending
          */
         while(m-- > 0) {
             st = new StringTokenizer(br.readLine());
