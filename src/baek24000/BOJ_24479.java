@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-// BOJ 24479 : Breadth First Search 1
-// use BFS, adjacency list
+// BOJ 24479 : Depth First Search 1
+// use DFS, adjacency list
 public class BOJ_24479 {
     static BufferedReader br;
     static StringBuilder sb;
