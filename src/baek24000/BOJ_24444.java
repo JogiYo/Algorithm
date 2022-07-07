@@ -14,7 +14,7 @@ public class BOJ_24444 {
     static ArrayList<Integer>[] edges;
     static boolean[] visited;
     static int[] answer;
-    static int order = 0;
+    static int order = 0; // node visit order
     public static void main(String[] args) throws Exception {
         br = new BufferedReader(new InputStreamReader(System.in));
         sb = new StringBuilder();
@@ -32,7 +32,6 @@ public class BOJ_24444 {
         answer = new int[n+1];
         edges = new ArrayList[n+1];
         visited = new boolean[n+1];
-        int order = 0; // node visit order
 
         for(int i = 1; i <= n; ++i) {
             edges[i] = new ArrayList<>();
