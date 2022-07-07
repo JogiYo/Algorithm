@@ -3,13 +3,9 @@ package baek24000;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.StringTokenizer;
+import java.util.*;
 
-// BOJ 24479 : Breadth First Search 1
-// use BFS, adjacency list
-public class BOJ_24479 {
+public class BOJ_24444 {
     static BufferedReader br;
     static StringBuilder sb;
     static StringTokenizer st;
@@ -55,18 +51,25 @@ public class BOJ_24479 {
         // Sort the adjacency list of each vertex in ascending order.
         for(int i = 1; i <= n; ++i) Collections.sort(edges[i]);
 
-        visited[r] = true;
-        dfs(r);
+        bfs(r);
 
         for(int i = 1; i <= n; ++i) sb.append(answer[i]).append("\n");
     }
 
-    private static void dfs(int cur) {
-        answer[cur] = ++order;
-        for(int next : edges[cur]) {
-            if(!visited[next]) {
-                visited[next] = true;
-                dfs(next);
+    private static void bfs(int cur) {
+        Queue<Integer> queue = new LinkedList<>();
+        queue.offer(cur);
+        visited[cur] = true;
+
+        while(!queue.isEmpty()) {
+            int num = queue.poll();
+            answer[num] = ++order;
+
+            for(int next : edges[num]) {
+                if(!visited[next]) {
+                    queue.add(next);
+                    visited[next] = true;
+                }
             }
         }
     }
