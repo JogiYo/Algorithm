@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-// BOJ 24479 : Breadth First Search 1
+// BOJ 24444 : Breadth First Search 1
 // use BFS, adjacency list
 public class BOJ_24444 {
     static BufferedReader br;
