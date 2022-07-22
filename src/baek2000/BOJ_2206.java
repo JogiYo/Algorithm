@@ -7,15 +7,17 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+// BOJ 2206 : Break the wall and Move
+// use BFS
 public class BOJ_2206 {
     static class Location {
-        int row, col, distance, destroy;
+        int row, col, distance, destroyed;
 
-        public Location(int row, int col, int distance, int destroy) {
+        public Location(int row, int col, int distance, int destroyed) {
             this.row = row;
             this.col = col;
             this.distance = distance;
-            this.destroy = destroy;
+            this.destroyed = destroyed;
         }
     }
     static BufferedReader br;
@@ -61,7 +63,7 @@ public class BOJ_2206 {
 
         while(!queue.isEmpty()) {
             Location location = queue.poll();
-
+            // In case of arrival point, return distance
             if(location.row == N-1 && location.col == M-1) {
                 return location.distance;
             }
@@ -71,17 +73,18 @@ public class BOJ_2206 {
                 int ncol = location.col + dcol[i];
 
                 if(nrow < 0 || ncol < 0 || nrow  >= N || ncol >= M) continue;
+                // Check if the following location is a construction site
+                if(visited[nrow][ncol] <= location.destroyed) continue;
 
-                if(visited[nrow][ncol] <= location.destroy) continue;
-
+                // if there is no wall
                 if(map[nrow][ncol] == 0) {
-                    visited[nrow][ncol] = location.destroy;
-                    queue.offer(new Location(nrow, ncol, location.distance+1, location.destroy));
+                    visited[nrow][ncol] = location.destroyed;
+                    queue.offer(new Location(nrow, ncol, location.distance+1, location.destroyed));
                 }
-                else {
-                    if(location.destroy == 0) {
-                        visited[nrow][ncol] = location.destroy + 1;
-                        queue.offer(new Location(nrow, ncol, location.distance+1, location.destroy+1));
+                else { // If there is a wall, the number of constructions should be 0.
+                    if(location.destroyed == 0) {
+                        visited[nrow][ncol] = location.destroyed + 1;
+                        queue.offer(new Location(nrow, ncol, location.distance+1, location.destroyed+1));
                     }
                 }
             }
