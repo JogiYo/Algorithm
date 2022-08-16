@@ -1,4 +1,4 @@
-package beak6000;
+package baek6000;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
