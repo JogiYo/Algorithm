@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+// ref : https://st-lab.tistory.com/281
+// binary search
 public class BOJ_1300 {
     static BufferedReader br;
     static StringBuilder sb;
@@ -20,5 +22,11 @@ public class BOJ_1300 {
     }
 
     private static void solution(int n, int k) {
+        long left = 1;
+        long right = k;
+
+        while(left < right) {
+            
+        }
     }
 }
