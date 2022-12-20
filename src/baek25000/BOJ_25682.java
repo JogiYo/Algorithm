@@ -27,10 +27,28 @@ public class BOJ_25682 {
             for(int j = 0; j < m; ++j) chess[i][j] = line.charAt(j);
         }
 
-        
+        sb.append(Math.min(solution('B'), solution('W')));
         System.out.print(sb);
     }
 
     private static int solution(char color) {
+        int count = Integer.MAX_VALUE;
+        int sameColor;
+        int[][] prefixSum = new int[n+1][m+1];
+
+        for(int i = 0; i < n; ++i) {
+            for(int j = 0; j < m; ++j) {
+                if((i+j)%2 == 0) {
+                    sameColor = chess[i][j] != color ? 1 : 0;
+                }
+                else {
+                    sameColor = chess[i][j] == color ? 1 : 0;
+                }
+
+                prefixSum[i+1][j+1] = prefixSum[i][j+1] + prefixSum[i+1][j] - prefixSum[i][j] + sameColor;
+            }
+        }
+
+
     }
 }
